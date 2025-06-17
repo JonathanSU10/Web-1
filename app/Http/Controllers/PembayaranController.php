@@ -170,6 +170,15 @@ class PembayaranController extends Controller
         ]);
         return redirect('/data-payment');
     }
+   public function invoice($id)
+{
+    $data = Pembayaran::with(['pendaftaran.pilihan1'])
+        ->where('id_pembayaran', $id)
+        ->firstOrFail();
+
+    return view('pembayaran.invoice', compact('data'));
+}
+
 
     public function invalidbayar($id_pembayaran){
         Pembayaran::where("id_pembayaran", "$id_pembayaran")->update([

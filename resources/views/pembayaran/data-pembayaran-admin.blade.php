@@ -240,41 +240,57 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <div class="d-flex">
-                                                <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target=".edit{{ $x->id_pembayaran }}"><i
-                                                        class="fa fa-pencil-alt"></i></a>
-                                                {{-- <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target=".delete{{ $x->id_pembayaran }}"></i></a> --}}
-                                                <div class="modal fade delete{{ $x->id_pembayaran }}" tabindex="-1"
-                                                    role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog modal-sm">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title">Hapus Data</h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal">
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body text-center"><i
-                                                                    class="fa fa-trash"></i><br> Apakah anda yakin ingin menghapus data ini?<br>{{ $x->id_pembayaran }}
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger light"
-                                                                    data-bs-dismiss="modal">Batalkan</button>
-                                                                <a href="delete-payment/{{ $x->id_pembayaran }}">
-                                                                    <button type="submit" class="btn btn-danger shadow">
-                                                                        Ya, Hapus Data!
-                                                                    </button></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+    <div class="d-flex">
+        {{-- Tombol Edit --}}
+        <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
+           data-bs-toggle="modal"
+           data-bs-target=".edit{{ $x->id_pembayaran }}">
+            <i class="fa fa-pencil-alt"></i>
+        </a>
 
-                                        </td>
+        {{-- Tombol Invoice --}}
+        <a href="{{ route('pembayaran.invoice', $x->id_pembayaran) }}"
+           class="btn btn-info shadow btn-xs sharp me-1"
+           title="Lihat Invoice"
+           target="_blank">
+            <i class="fa fa-file-invoice"></i>
+        </a>
+
+        {{-- Tombol Hapus --}}
+        {{-- Aktifkan jika ingin tampilkan tombol hapus sebagai ikon langsung --}}
+        {{-- 
+        <a class="btn btn-danger shadow btn-xs sharp" data-bs-toggle="modal"
+           data-bs-target=".delete{{ $x->id_pembayaran }}">
+           <i class="fa fa-trash"></i>
+        </a>
+        --}}
+
+        {{-- Modal Hapus --}}
+        <div class="modal fade delete{{ $x->id_pembayaran }}" tabindex="-1"
+             role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Hapus Data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <i class="fa fa-trash fa-2x mb-3 text-danger"></i><br>
+                        Apakah Anda yakin ingin menghapus data ini?<br>
+                        <strong>{{ $x->id_pembayaran }}</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary light" data-bs-dismiss="modal">Batalkan</button>
+                        <a href="{{ url('delete-payment/'.$x->id_pembayaran) }}">
+                            <button type="submit" class="btn btn-danger shadow">Ya, Hapus Data!</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</td>
+
                                     </tr>
 
                                     <div class="modal fade edit{{ $x->id_pembayaran }}" tabindex="-1" role="dialog"

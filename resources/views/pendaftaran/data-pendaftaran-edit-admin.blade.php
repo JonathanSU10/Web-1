@@ -235,7 +235,7 @@ Pendaftaran
                                         <div class="mb-3 mb-4">
                                             <label class="form-label" for="personal-data-nik">Paket</label>
                                             <input class="form-control" value="{{ $viewData->pil1 }}" list="datalistOptionspaket" id="exampleDataList"
-                                                placeholder="Cari Kursus..." name="pil1" value="{{ old('pil1') }}" autocomplete='off' >
+                                                placeholder="Cari Paket..." name="pil1" value="{{ old('pil1') }}" autocomplete='off' >
                                             <datalist id="datalistOptionspaket">
                                                 @foreach ($viewpaket as $z)
                                                     <option value="{{ $z->id_paket }}">{{ $z->nama_paket }}</option>

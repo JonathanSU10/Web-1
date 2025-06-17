@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-payment/{id_pembayaran}', [PembayaranController::class, 'updatepembayaran']);
     Route::get('/delete-payment/{id_pembayaran}', [PembayaranController::class, 'hapuspembayaran']);
     Route::get('/pembayaran/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
+    Route::get('invoice/{id}', [PembayaranController::class, 'invoice'])->name('pembayaran.invoice');
 
     Route::post('/upload-payment', [PembayaranController::class, 'updatebuktipembayaran'])->name('upload-payment');
     Route::get('/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasipembayaran']);

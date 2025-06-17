@@ -7,6 +7,22 @@
             font-family: Arial, sans-serif;
         }
 
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header img {
+            width: 100px;
+            height: auto;
+        }
+
+        .header .title {
+            flex: 1;
+            text-align: center;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -32,29 +48,39 @@
     </style>
 </head>
 <body>
+
+    <div class="header">
+        <img src="{{ asset('sipenmaru/images/sako_tour_logo.png') }}" alt="Logo Sako Tour">
+        <div class="title">
+            <h2>PT SAKO UTAMA WISATA</h2>
+        </div>
+    </div>
+
+    <hr>
+
     <h2>Data Pembayaran</h2>
 
     <table>
         <thead>
             <tr>
-            <th>No</th>
-            <th>Nama Pendaftar</th>
-            <th>Paket</th>
-            <th>Biaya Pendaftaran</th>
-            <th>Tanggal Pembayaran</th>
-            <th>Status</th>
+                <th>No</th>
+                <th>Nama Pendaftar</th>
+                <th>Paket</th>
+                <th>Biaya Pendaftaran</th>
+                <th>Tanggal Pembayaran</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             @php $no = 1; @endphp
             @foreach ($viewData as $x)
                 <tr>
-                <td>{{ $no++ }}</td>
-                                        <td>{{ $x->pendaftaran->nama }}</a></td>
-                                        <td>{{ $x->pendaftaran->pilihan1->nama_paket }}</td>
-                                        <td>{{ $x->pendaftaran->pilihan1->harga_paket }}</td>
-                                        <td>{{ $x->tgl_pembayaran }}</td>
-                                        <td>{{ $x->status }}</td>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $x->pendaftaran->nama }}</td>
+                    <td>{{ $x->pendaftaran->pilihan1->nama_paket ?? '-' }}</td>
+                    <td>{{ number_format($x->pendaftaran->pilihan1->harga_paket ?? 0, 0, ',', '.') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($x->tgl_pembayaran)->format('d/m/Y') }}</td>
+                    <td>{{ $x->status }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -65,5 +91,6 @@
             window.print();
         };
     </script>
+
 </body>
 </html>

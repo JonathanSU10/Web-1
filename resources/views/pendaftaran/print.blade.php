@@ -7,6 +7,22 @@
             font-family: Arial, sans-serif;
         }
 
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header img {
+            width: 100px;
+            height: auto;
+        }
+
+        .header .title {
+            flex: 1;
+            text-align: center;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -32,6 +48,17 @@
     </style>
 </head>
 <body>
+
+    <div class="header">
+       <img src="{{ asset('sipenmaru/images/sako_tour_logo.png') }}" alt="Logo Sako Tour">
+        <div class="title">
+
+            <h2>PT SAKO UTAMA WISATA</h2>
+        </div>
+    </div>
+
+    <hr>
+
     <h2>Data Pendaftaran</h2>
 
     <table>
